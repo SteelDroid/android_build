@@ -460,7 +460,7 @@ function print_lunch_menu()
     echo
     echo "You're building on" $uname
     if [ "$(uname)" = "Darwin" ] ; then
-    	echo "  (ohai, koush!)"
+       echo "  (ohai, koush!)"
     fi
     echo
     if [ "z${CM_DEVICES_ONLY}" != "z" ]; then
@@ -1564,10 +1564,10 @@ function mka() {
 function reposync() {
     case `uname -s` in
         Darwin)
-            repo sync -j 4 "$@"
+            repo sync -j 2 "$@"
             ;;
         *)
-            schedtool -B -n 1 -e ionice -n 1 repo sync -j 4 "$@"
+            schedtool -B -n 1 -e ionice -n 1 repo sync -j 2 "$@"
             ;;
     esac
 }
