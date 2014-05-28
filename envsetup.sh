@@ -1203,7 +1203,9 @@ function mka() {
             ;;
         *)
             local cores=`nproc --all`
-            schedtool -B -n 1 -e ionice -n 1 make -j $cores "$@"
+            let "threads= ( $cores * 2)"
+            echo "Using $threads threads for the build"
+            schedtool -B -n 1 -e ionice -n 1 make -j $processes "$@"
             ;;
     esac
 }
