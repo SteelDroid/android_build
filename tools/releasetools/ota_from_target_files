@@ -338,13 +338,9 @@ def WriteFullOTAPackage(input_zip, output_zip):
   script.FormatPartition("/system")
 
   script.Mount("/system")
-  script.Mount("/data")
   script.Print("Installing ROM...")
 
   script.UnpackPackageDir("system", "/system")
-  script.UnpackPackageDir("/system/tempgapps", "/data/app")
-
-  script.AppendExtra('delete_recursive("/system/tempgapps");')
 
   symlinks = CopySystemFiles(input_zip, output_zip)
   script.MakeSymlinks(symlinks)
