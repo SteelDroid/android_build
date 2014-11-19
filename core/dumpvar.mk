@@ -1,6 +1,17 @@
 # ---------------------------------------------------------------
 # the setpath shell function in envsetup.sh uses this to figure out
 # what to add to the path given the config we have chosen.
+
+ifneq ($(BUILD_WITH_COLORS),0)
+  CL_RED="\033[31m"
+  CL_GRN="\033[32m"
+  CL_YLW="\033[33m"
+  CL_BLU="\033[34m"
+  CL_MAG="\033[35m"
+  CL_CYN="\033[36m"
+  CL_RST="\033[0m"
+endif
+
 ifeq ($(CALLED_FROM_SETUP),true)
 
 ABP:=$(PWD)/$(HOST_OUT_EXECUTABLES)
@@ -60,19 +71,25 @@ endif # CALLED_FROM_SETUP
 
 
 ifneq ($(PRINT_BUILD_CONFIG),)
-$(info ============================================)
-$(info   PLATFORM_VERSION_CODENAME=$(PLATFORM_VERSION_CODENAME))
-$(info   PLATFORM_VERSION=$(PLATFORM_VERSION))
-$(info   TARGET_PRODUCT=$(TARGET_PRODUCT))
-$(info   TARGET_BUILD_VARIANT=$(TARGET_BUILD_VARIANT))
-$(info   TARGET_SIMULATOR=$(TARGET_SIMULATOR))
-$(info   TARGET_BUILD_TYPE=$(TARGET_BUILD_TYPE))
-$(info   TARGET_BUILD_APPS=$(TARGET_BUILD_APPS))
-$(info   TARGET_ARCH=$(TARGET_ARCH))
-$(info   TARGET_ARCH_VARIANT=$(TARGET_ARCH_VARIANT))
-$(info   HOST_ARCH=$(HOST_ARCH))
-$(info   HOST_OS=$(HOST_OS))
-$(info   HOST_BUILD_TYPE=$(HOST_BUILD_TYPE))
-$(info   BUILD_ID=$(BUILD_ID))
-$(info ============================================)
+
+$(info $(shell clear))
+$(info $(shell echo -e ${CL_CYN}======================${CL_RST}))
+$(info $(shell echo -e ${CL_CYN}Welcome to Steel Droid${CL_RST}))
+$(info $(shell echo -e ${CL_CYN}======================${CL_RST}))
+$(info $(shell echo ))
+$(info $(shell echo -e ${CL_CYN}"============================================"${CL_RST}))
+$(info $(shell echo -e ${CL_CYN}"BUILD_ID=                    "${CL_RST})$(shell echo -e ${CL_GRN}$(BUILD_ID)${CL_RST}))
+$(info $(shell echo -e ${CL_CYN}"PLATFORM_VERSION=            "${CL_RST})$(shell echo -e ${CL_GRN}$(PLATFORM_VERSION)${CL_RST}))
+$(info $(shell echo -e ${CL_CYN}"TARGET_BUILD_TYPE=           "${CL_RST})$(shell echo -e ${CL_GRN}$(TARGET_BUILD_TYPE)${CL_RST}))
+$(info $(shell echo -e ${CL_CYN}"TARGET_PRODUCT=              "${CL_RST})$(shell echo -e ${CL_GRN}$(TARGET_PRODUCT)${CL_RST}))
+$(info $(shell echo -e ${CL_CYN}"TARGET_BUILD_VARIANT=        "${CL_RST})$(shell echo -e ${CL_GRN}$(TARGET_BUILD_VARIANT)${CL_RST}))
+$(info $(shell echo -e ${CL_CYN}"TARGET_SIMULATOR=            "${CL_RST})$(shell echo -e ${CL_GRN}$(TARGET_SIMULATOR)${CL_RST}))
+$(info $(shell echo -e ${CL_CYN}"TARGET_BUILD_APPS=           "${CL_RST})$(shell echo -e ${CL_GRN}$(TARGET_BUILD_APPS)${CL_RST}))
+$(info $(shell echo -e ${CL_CYN}"TARGET_ARCH=                 "${CL_RST})$(shell echo -e ${CL_GRN}$(TARGET_ARCH)${CL_RST}))
+$(info $(shell echo -e ${CL_CYN}"TARGET_ARCH_VARIANT=         "${CL_RST})$(shell echo -e ${CL_GRN}$(TARGET_ARCH_VARIANT)${CL_RST}))
+$(info $(shell echo -e ${CL_CYN}"HOST_ARCH=                   "${CL_RST})$(shell echo -e ${CL_GRN}$(HOST_ARCH)${CL_RST}))
+$(info $(shell echo -e ${CL_CYN}"HOST_OS=                     "${CL_RST})$(shell echo -e ${CL_GRN}$(HOST_OS)${CL_RST}))
+$(info $(shell echo -e ${CL_CYN}"HOST_BUILD_TYPE=             "${CL_RST})$(shell echo -e ${CL_GRN}$(HOST_BUILD_TYPE)${CL_RST}))
+$(info $(shell echo -e ${CL_CYN}"============================================"${CL_RST}))
+
 endif
