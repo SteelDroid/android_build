@@ -32,12 +32,10 @@ PRODUCT_PACKAGES := \
     LatinIME \
     Mms \
     Music \
-    Provision \
     Settings \
     Superuser \
     Sync \
     SystemUI \
-    Updater \
     CalendarProvider \
     SyncProvider
 

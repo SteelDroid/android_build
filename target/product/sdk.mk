@@ -22,7 +22,6 @@ PRODUCT_PACKAGES := \
 	Camera \
 	Calculator \
 	DeskClock \
-	Development \
 	DrmProvider \
 	Email \
 	Fallback \
@@ -108,7 +107,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core.mk)
 PRODUCT_BRAND := generic
 PRODUCT_NAME := sdk
 PRODUCT_DEVICE := generic
-PRODUCT_LOCALES := 
+PRODUCT_LOCALES :=
 	hdpi \
 	en_US
 
